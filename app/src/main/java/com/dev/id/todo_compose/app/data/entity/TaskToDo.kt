@@ -1,10 +1,10 @@
-package com.dev.id.todo_compose.data.entity
+package com.dev.id.todo_compose.app.data.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.dev.id.todo_compose.data.model.Priority
+import com.dev.id.todo_compose.app.data.model.Priority
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "task_todo_table")
