@@ -5,9 +5,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.dev.id.todo_compose.app.data.model.Priority
+import com.dev.id.todo_compose.app.data.utils.IConstants
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "task_todo_table")
+@Entity(tableName = IConstants.DATABASE_TABLE)
 @Parcelize
 data class TaskToDo(
     @PrimaryKey(autoGenerate = true)
