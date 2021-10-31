@@ -1,7 +1,7 @@
 package com.dev.id.todo_compose.app.data.repository
 
 import com.dev.id.todo_compose.app.data.db.dao.TaskToDoDao
-import com.dev.id.todo_compose.app.data.entity.TaskToDo
+import com.dev.id.todo_compose.app.data.db.entity.TaskToDo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

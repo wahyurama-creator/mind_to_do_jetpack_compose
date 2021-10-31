@@ -1,7 +1,7 @@
 package com.dev.id.todo_compose.app.data.db.dao
 
 import androidx.room.*
-import com.dev.id.todo_compose.app.data.entity.TaskToDo
+import com.dev.id.todo_compose.app.data.db.entity.TaskToDo
 import kotlinx.coroutines.flow.Flow
 
 @Dao

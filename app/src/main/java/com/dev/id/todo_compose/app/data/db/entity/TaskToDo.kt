@@ -1,4 +1,4 @@
-package com.dev.id.todo_compose.app.data.entity
+package com.dev.id.todo_compose.app.data.db.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
