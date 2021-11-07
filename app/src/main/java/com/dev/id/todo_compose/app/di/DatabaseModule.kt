@@ -7,12 +7,12 @@ import com.dev.id.todo_compose.app.data.utils.IConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
     @Singleton
@@ -24,6 +24,8 @@ object DatabaseModule {
             IConstants.DATABASE_NAME
         ).build()
 
+    @Singleton
+    @Provides
     fun provideDao(db: TaskToDoDatabase) = db.taskToDoDao()
 
 }
