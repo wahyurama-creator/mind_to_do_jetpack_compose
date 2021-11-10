@@ -5,8 +5,8 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.dev.id.todo_compose.app.data.utils.IConstants.LIST_SCREEN
-import com.dev.id.todo_compose.ui.navigation.destionation.listComposable
-import com.dev.id.todo_compose.ui.navigation.destionation.taskComposable
+import com.dev.id.todo_compose.ui.navigation.destination.listComposable
+import com.dev.id.todo_compose.ui.navigation.destination.taskComposable
 
 @Composable
 fun SetupNavigationController(navController: NavHostController) {

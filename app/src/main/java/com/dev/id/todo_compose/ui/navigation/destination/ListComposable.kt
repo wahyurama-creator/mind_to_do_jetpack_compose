@@ -1,4 +1,4 @@
-package com.dev.id.todo_compose.ui.navigation.destionation
+package com.dev.id.todo_compose.ui.navigation.destination
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
