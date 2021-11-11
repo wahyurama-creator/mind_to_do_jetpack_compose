@@ -1,4 +1,4 @@
-# mind_to_do_jetpack_compose
+# MindToDo - To DoList &amp; Reminder
 Create To Do List application with Jetpack Compose with MVVM and Clean Architecture
 
 MindToDo is todo list app for boost your productivity and remind your activity at least 15 minute before starting.
