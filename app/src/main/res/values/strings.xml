@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MindToDo - To DoList &amp; Reminder</string>
+    <string name="add_button">Add Button</string>
 </resources>
