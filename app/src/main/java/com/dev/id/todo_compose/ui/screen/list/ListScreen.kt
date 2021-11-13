@@ -14,6 +14,9 @@ import com.dev.id.todo_compose.R
 @Composable
 fun ListScreen(navigateToTaskScreen: (Int) -> Unit) {
     Scaffold(
+        topBar = {
+            ListAppBar()
+        },
         content = {},
         floatingActionButton = {
             ListFAB(onFABClicked = navigateToTaskScreen)
