@@ -1,5 +1,7 @@
 package com.dev.id.todo_compose.app.data.utils
 
+import androidx.compose.ui.unit.dp
+
 object IConstants {
     // Database
     const val DATABASE_NAME = "task_todo_database"
@@ -11,4 +13,13 @@ object IConstants {
     const val LIST_ARGUMENTS_KEY = "action"
     const val TASK_ARGUMENTS_KEY = "taskId"
 
+    // Dimens
+    val LARGE_PADDING = 12.dp
+    val MEDIUM_PADDING = 8.dp
+    val SMALL_PADDING = 6.dp
+    val PRIORITY_INDICATOR = 16.dp
+
+    // Log Tags
+    const val CLICK_EVENTS = "Click Event"
+    const val DROPDOWN_MENU_ITEM = "Dropdown Item"
 }
