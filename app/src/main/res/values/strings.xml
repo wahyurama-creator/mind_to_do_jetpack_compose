@@ -8,4 +8,5 @@
     <string name="button_delete_all">Delete All Button</string>
 
     <string name="text_delete_all">Delete All</string>
+    <string name="text_search_placeholder">Search Tasks</string>
 </resources>
