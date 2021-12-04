@@ -6,6 +6,7 @@
     <string name="button_search">Search Button</string>
     <string name="button_sort_priority">Sort Priority Button</string>
     <string name="button_delete_all">Delete All Button</string>
+    <string name="trailing_icon_close">Close Button</string>
 
     <string name="text_delete_all">Delete All</string>
     <string name="text_search_placeholder">Search Tasks</string>
