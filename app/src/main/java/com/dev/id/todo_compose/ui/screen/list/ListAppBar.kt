@@ -21,25 +21,54 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.dev.id.todo_compose.R
 import com.dev.id.todo_compose.app.data.model.Priority
 import com.dev.id.todo_compose.app.data.utils.IConstants.CLICK_EVENTS
 import com.dev.id.todo_compose.app.data.utils.IConstants.DROPDOWN_MENU_ITEM
 import com.dev.id.todo_compose.app.data.utils.IConstants.LARGE_PADDING
 import com.dev.id.todo_compose.app.data.utils.IConstants.TOP_APP_BAR_HEIGHT
+import com.dev.id.todo_compose.app.data.utils.SearchAppBarState
+import com.dev.id.todo_compose.app.data.utils.SearchAppBarState.CLOSED
+import com.dev.id.todo_compose.app.data.utils.SearchAppBarState.OPENED
+import com.dev.id.todo_compose.app.data.utils.TrailingIconState
 import com.dev.id.todo_compose.ui.component.PriorityItem
 import com.dev.id.todo_compose.ui.theme.Typography
 import com.dev.id.todo_compose.ui.theme.topAppBarBackground
 import com.dev.id.todo_compose.ui.theme.topAppBarContentColor
+import com.dev.id.todo_compose.ui.viewmodel.SharedViewModel
 
 @ExperimentalComposeUiApi
 @Composable
-fun ListAppBar() {
-    DefaultAppBar(
-        onSearchClicked = {},
-        onSortClicked = {},
-        onDeleteClicked = {}
-    )
+fun ListAppBar(
+    viewModel: SharedViewModel,
+    searchAppBarState: SearchAppBarState,
+    searchTextState: String
+) {
+    when (searchAppBarState) {
+        CLOSED -> {
+            DefaultAppBar(
+                onSearchClicked = {
+                    viewModel.searchAppBarState.value = OPENED
+                },
+                onSortClicked = {},
+                onDeleteClicked = {}
+            )
+        }
+        else -> {
+            SearchAppBarView(
+                text = searchTextState,
+                onTextChange = { newText ->
+                    viewModel.searchTextState.value = newText
+                },
+                onCloseClicked = {
+                    viewModel.searchAppBarState.value = CLOSED
+                    viewModel.searchTextState.value = ""
+                },
+                onSearchClicked = {}
+            )
+        }
+    }
 }
 
 @ExperimentalComposeUiApi
@@ -53,15 +82,16 @@ fun DefaultAppBar(
         title = {
             Text(
                 text = stringResource(id = R.string.app_name_short),
-                color = MaterialTheme.colors.topAppBarContentColor
+                color = MaterialTheme.colors.topAppBarContentColor,
+                fontSize = 18.sp,
+                style = Typography.subtitle2
             )
         },
         actions = {
-            SearchAppBarView(
-                text = "",
-                onTextChange = {},
-                onCloseClicked = { },
-                onSearchClicked = {}
+            ListAppBarAction(
+                onSearchClicked = { onSearchClicked() },
+                onSortClicked = { onSortClicked(it) },
+                onDeleteClicked = { onDeleteClicked() }
             )
         },
         backgroundColor = MaterialTheme.colors.topAppBarBackground,
@@ -201,6 +231,9 @@ fun SearchAppBarView(
     onSearchClicked: (String) -> Unit
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
+    var trailingIconState: TrailingIconState by remember {
+        mutableStateOf(TrailingIconState.READY_TO_CLOSE)
+    }
 
     Surface(
         modifier = Modifier
@@ -241,10 +274,28 @@ fun SearchAppBarView(
             trailingIcon = {
                 IconButton(
                     modifier = Modifier.alpha(ContentAlpha.disabled),
-                    onClick = { onCloseClicked() }) {
+                    onClick = {
+                        when (trailingIconState) {
+                            TrailingIconState.READY_TO_DELETE -> {
+                                onTextChange("")
+                                trailingIconState =
+                                    TrailingIconState.READY_TO_CLOSE
+                            }
+                            TrailingIconState.READY_TO_CLOSE -> {
+                                if (text.isNotEmpty()) {
+                                    onTextChange("")
+                                } else {
+                                    onCloseClicked()
+                                    trailingIconState =
+                                        TrailingIconState.READY_TO_DELETE
+                                }
+                            }
+                        }
+                    }
+                ) {
                     Icon(
                         imageVector = Icons.Filled.Close,
-                        contentDescription = stringResource(id = R.string.button_search),
+                        contentDescription = stringResource(id = R.string.trailing_icon_close),
                         tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
