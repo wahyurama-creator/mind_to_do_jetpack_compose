@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.dev.id.todo_compose.R
 import com.dev.id.todo_compose.app.data.utils.SearchAppBarState
-import com.dev.id.todo_compose.ui.theme.fabBackground
+import com.dev.id.todo_compose.ui.theme.fabBackgroundColor
 import com.dev.id.todo_compose.ui.viewmodel.SharedViewModel
 
 @ExperimentalComposeUiApi
@@ -34,7 +34,9 @@ fun ListScreen(
                 searchTextState
             )
         },
-        content = {},
+        content = {
+            ListContent()
+        },
         floatingActionButton = {
             ListFAB(onFABClicked = navigateToTaskScreen)
         }
@@ -49,7 +51,7 @@ fun ListFAB(
         onClick = {
             onFABClicked(-1)
         },
-        backgroundColor = MaterialTheme.colors.fabBackground
+        backgroundColor = MaterialTheme.colors.fabBackgroundColor
     ) {
         Icon(
             imageVector = Icons.Filled.Add,
