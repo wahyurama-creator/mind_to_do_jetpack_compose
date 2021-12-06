@@ -1,5 +1,6 @@
 package com.dev.id.todo_compose.app.data.utils
 
+import android.util.Log
 import androidx.compose.ui.unit.dp
 
 object IConstants {
@@ -26,4 +27,8 @@ object IConstants {
     // Log Tags
     const val CLICK_EVENTS = "Click Event"
     const val DROPDOWN_MENU_ITEM = "Dropdown Item"
+    const val SCREEN_NAME = "Screen Name"
+    fun trackLogs(tag: String, message: String) {
+        Log.e(tag, message)
+    }
 }
