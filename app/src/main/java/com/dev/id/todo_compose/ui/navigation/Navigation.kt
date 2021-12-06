@@ -1,5 +1,6 @@
 package com.dev.id.todo_compose.ui.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -10,6 +11,7 @@ import com.dev.id.todo_compose.ui.navigation.destination.listComposable
 import com.dev.id.todo_compose.ui.navigation.destination.taskComposable
 import com.dev.id.todo_compose.ui.viewmodel.SharedViewModel
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
 fun SetupNavigationController(
