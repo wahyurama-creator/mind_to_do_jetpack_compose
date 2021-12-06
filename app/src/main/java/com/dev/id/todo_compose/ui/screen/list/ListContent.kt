@@ -2,6 +2,8 @@ package com.dev.id.todo_compose.ui.screen.list
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -21,9 +23,25 @@ import com.dev.id.todo_compose.app.data.utils.IConstants.TASK_ITEM_ELEVATION
 import com.dev.id.todo_compose.ui.theme.taskItemBackgroundColor
 import com.dev.id.todo_compose.ui.theme.taskItemTextColor
 
+@ExperimentalMaterialApi
 @Composable
-fun ListContent() {
-
+fun ListContent(
+    tasks: List<TaskToDo>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    LazyColumn {
+        items(
+            items = tasks,
+            key = { task ->
+                task.id
+            }
+        ) { task ->
+            TaskItem(
+                taskToDo = task,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
+    }
 }
 
 @ExperimentalMaterialApi
